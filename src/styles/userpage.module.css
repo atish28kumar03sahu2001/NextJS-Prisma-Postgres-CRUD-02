@@ -1,0 +1,116 @@
+.SEC_HDR_H1 {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #3b79b3;
+    border-radius: 10px;
+}
+.MAIN_FRM_SEC {
+    background: #3b79b3;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.MAIN_FRM_DIV {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.MAIN_FRM_DIV_D {
+    margin: 10px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+}
+.MAIN_FRM_LBL {
+    font-size: 14px;
+    margin: 5px;
+}
+.MAIN_FRM_IP {
+    border: none;
+    outline: none;
+    margin: 5px;
+    padding-left: 5px;
+    height: 30px;
+    font-size: 12px;
+}
+.MAIN_FRM_BTN_D {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.MAIN_FRM_BTN {
+    border: none;
+    outline: none;
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgb(165, 242, 252);
+}
+.FRM_DATA_SEC {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.FRM_DATA {
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+}
+.FRM_DATA_BTN_DIV {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+@media screen and (max-width: 710px) {
+    .FRM_DATA_SEC {
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .FRM_DATA {
+        width: calc(90% - 20px);
+        margin: 10px auto;
+    }
+}
+@media screen and (max-width: 650px) {
+    .MAIN_FRM_DIV_D {
+        width: 250px;
+    }    
+}
+@media screen and (max-width: 600px) {
+    .MAIN_FRM_DIV_D {
+        width: 200px;
+    }    
+}
+@media screen and (max-width: 490px) {
+    .MAIN_FRM_DIV {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .MAIN_FRM_DIV_D {
+        width: 100%;
+    }
+}

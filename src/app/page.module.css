@@ -1,0 +1,36 @@
+.SEC_HEADER{
+  width: 100%;
+  height: 99vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.SEC_H1 {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    text-wrap: wrap;
+    word-wrap: break-word;
+}
+.SEC_LNK {
+    text-decoration: none;
+    margin: 10px;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #1f6c90;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    text-wrap: wrap;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; 
+}

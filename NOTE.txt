@@ -1,0 +1,188 @@
+Microsoft Windows [Version 10.0.22631.5335]
+(c) Microsoft Corporation. All rights reserved.
+Microsoft Windows [Version 10.0.22631.5335]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Lenovo\Desktop\next-app>npx create-next-app@latest
+√ What is your project named? ... .
+√ Would you like to use TypeScript? ... No
+√ Would you like to use ESLint? ... No
+√ Would you like to use Tailwind CSS? ... No
+√ Would you like your code inside a `src/` directory? ... Yes     
+√ Would you like to use App Router? (recommended) ... Yes
+√ Would you like to use Turbopack for `next dev`? ... Yes
+√ Would you like to customize the import alias (`@/*` by default)? ... No
+Creating a new Next.js app in C:\Users\Lenovo\Desktop\next-app.        
+
+Using npm.
+
+Initializing project with template: app
+
+
+Installing dependencies:
+- react
+- react-dom
+- next
+
+
+added 28 packages, and audited 29 packages in 3m
+
+5 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+Initialized a git repository.
+
+Success! Created next-app at C:\Users\Lenovo\Desktop\next-app
+
+
+C:\Users\Lenovo\Desktop\next-app>npm install prisma --save-dev
+
+added 8 packages, and audited 37 packages in 26s
+
+5 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+C:\Users\Lenovo\Desktop\next-app>npx prisma init
+Fetching latest updates for this subcommand...
+
+✔ Your Prisma schema was created at prisma/schema.prisma
+  You can now open it in your favorite editor.
+
+warn You already have a .gitignore file. Don't forget to add `.env` in it to not commit any private information.
+
+Next steps:
+g-started
+2. Set the provider of the datasource block in schema.prisma to match your database: postgresql, mysql, sqlite, sqlserver, mongodb or cockroachdb.
+3. Run prisma db pull to turn your database schema into a Prisma schema.
+4. Run prisma generate to generate the Prisma Client. You can then start querying your database.
+5. Tip: Explore how you can extend the ORM with scalable connection pooling, global caching, and real-time database events. Read: https://pris.ly/cli/beyond-orm
+
+More information in our documentation:
+https://pris.ly/d/getting-started
+
+
+
+C:\Users\Lenovo\Desktop\next-app>npm install @prisma/client
+
+added 1 package, and audited 38 packages in 14s
+
+5 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+C:\Users\Lenovo\Desktop\next-app>npx prisma generate
+Prisma schema loaded from prisma\schema.prisma
+
+✔ Generated Prisma Client (v6.8.2) to .\node_modules\@prisma\client in 75ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+
+C:\Users\Lenovo\Desktop\next-app>npx prisma db push
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": PostgreSQL database "nextjscrud01", schema "public" at "ep-wandering-cherry-a50r639r-pooler.us-east-2.aws.neon.tech"
+
+⚠️  There might be data loss when applying the changes:
+
+  • You are about to drop the `Expense` table, which is not empty (3 rows).
+
+
+
+√ Do you want to ignore the warning(s)? ... no
+Push cancelled.
+
+C:\Users\Lenovo\Desktop\next-app>npx prisma db push
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": PostgreSQL database "nextjscrud01", schema "public" at "ep-wandering-cherry-a50r639r-pooler.us-east-2.aws.neon.tech"
+
+Your database is now in sync with your Prisma schema. Done in 12.54s
+
+✔ Generated Prisma Client (v6.8.2) to .\node_modules\@prisma\client in 673ms
+
+
+C:\Users\Lenovo\Desktop\next-app>
+
+DATABASE_URL="ADD DB URL"
+NODE_ENV = 'ADD VALUE'
+
+
+HOW TO MERGE THINGS 
+
+
+model Expense {
+  id        String   @id @default(cuid())
+  expName   String
+  expPrice  Float
+  expDesc   String
+  expDate   DateTime
+  createdAt DateTime @default(now())
+
+  // Relation field
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id        String    @id @default(cuid())
+  username  String
+  useremail String
+  position  String
+  skills    String
+  phone     Int
+  address   String
+  age       Int
+  birthdate DateTime
+  createdAt DateTime @default(now())
+
+  // Relation field
+  expenses  Expense[]
+}
+
+
+ What This Does
+Adds a userId field to Expense to store the foreign key.
+
+Sets up a @relation between Expense and User:
+
+Expense.user is a reference to the User.
+
+User.expenses is a list of all related Expense records.
+
+cmd prompt
+
+npx prisma migrate dev --name add-user-expense-relation
+
+await prisma.expense.create({
+  data: {
+    expName: 'Lunch',
+    expPrice: 15.99,
+    expDesc: 'Lunch with client',
+    expDate: new Date(),
+    user: {
+      connect: { id: 'USER_ID_HERE' }
+    }
+  }
+});
+
+const userWithExpenses = await prisma.user.findUnique({
+  where: { id: 'USER_ID_HERE' },
+  include: { expenses: true }
+});
+
+
+const expenses = await prisma.expense.findMany({
+  where: { userId: 'USER_ID_HERE' }
+});
+
+
+
+
+
